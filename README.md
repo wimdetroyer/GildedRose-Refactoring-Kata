@@ -14,7 +14,7 @@
 - The Item class cannot be changed. That's a shame . 
   - I'm a proponent of Domain Driven Design where possible (<> anemic domain model: https://martinfowler.com/bliki/AnemicDomainModel.html)
     - quality must be >=0 & <= 50 is an example of a business rule inherent to an item
-    - Sulfaras being immutable with a fixed value is an example of a business rule inherent to an item
+    - Legendary items (like Sulfaras) being immutable with a fixed value is an example of a business rule inherent to an item
   - I suppose that extending the class is allowed (*)
     - I'll do this to atleast not have checks on hardcoded strings but via type checking (with instanceof)
       - It isn't ideal but if its allowed...
@@ -26,3 +26,15 @@
   - is it a seperate item? (the text fixture seems to indicate this so i'll assume it's this for this exercise!)
   - is it a property which is decorated upon an item? (i.e: Conjured Sulfuras, Conjured Brie, ...) 
     - (*) if this were the case it'd be harder to match this with an inheritance based data model (though at first glance the decorator pattern could come to the rescue.)
+
+## Step 1 - writing the unit tests for the existing code
+
+We assume everything worked beforehand, but in order to be confident in our refactors, we'll have to write tests for all possible scenarios.
+
+Conventions:
+ - naming: test<ScenarioUnderTest>_<expectedBehaviour>. Example: testLegendaryItem_doesNotDecreaseInQuality
+ - Given-When-Then construction
+ - TextTestFixture is not touched (naming is only rectified
+
+After testing all scenarios (11), we get to 100% coverage. We're ready for some refactoring!
+
