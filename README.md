@@ -131,6 +131,12 @@ In the spirit of TDD, these should break before development, which they did :-)
 
 The solution was adding a simple if check.
 
+### Step 3.3 PR strategy
+
+Following PR was opened & merged:
+
+https://github.com/wimdetroyer/GildedRose-Refactoring-Kata/pull/2
+
 ## Step 4 An alternative approach?
 
 This exercise was quite fun to do, albeit with a procedural approach.
