@@ -63,5 +63,11 @@ Rationale:
 Rationale: 
  - See: https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html (cfr Martin Fowler)
  
+### Step 2.4 - assure quality is always max 50 & minimum at the END of the method (post-assertion)
 
-
+Rationale:
+ - in order to reduce nested ifs
+ - Since we dont process legendary items this will work nicely
+ - with DDD, this is also something we could enforce on the item object itself
+Drawback:
+ - some code needlessly gets executed
