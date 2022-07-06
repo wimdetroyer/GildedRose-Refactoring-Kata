@@ -39,6 +39,10 @@ class GildedRose {
             qualityCoefficient *= -1;
         }
 
+        if(item instanceof ConjuredItem) {
+            qualityCoefficient *= -2;
+        }
+
         if(item.sellIn < 0) {
             qualityCoefficient *= 2;
         }

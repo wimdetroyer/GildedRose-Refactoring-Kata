@@ -34,7 +34,7 @@ class GildedRoseTest {
     @Test
     void testAllNonLegendaryItems_neverHaveANegativeQuality() {
         //Given
-        Item[] items = new Item[] {createNormalItem(5, 0), createAgedBrieItem(5,0), createBackStageItem(5,0)};
+        Item[] items = new Item[] {createNormalItem(5, 0), createAgedBrieItem(5,0), createBackStageItem(5,0), createConjuredItem(5,0)};
         GildedRose app = new GildedRose(items);
         //When
         app.updateQualities();
@@ -44,9 +44,23 @@ class GildedRoseTest {
         }
     }
 
+    @Test
+    void testAllNonLegendaryItems_qualityCanNeverBeHigherThan50() {
+        //Given
+        Item[] items = new Item[] {createNormalItem(5, 50), createAgedBrieItem(5,50), createBackStageItem(5,50), createConjuredItem(5,50)};
+        GildedRose app = new GildedRose(items);
+        //When
+        app.updateQualities();
+        //Then
+        for (Item item : items) {
+            assertEquals(4, item.sellIn);
+            assertTrue(item.quality <= 50);
+        }
+    }
+
     // -- Tests for 'normal' items ---
     @Test
-    void testNormalItems_degradeInQualityBeforeSellByDateHasPassed() {
+    void testNormalItems_decreasesByOneBeforeSellByDateHasPassed() {
         //Given
         Item[] items = new Item[] {createNormalItem(1, 10)};
         GildedRose app = new GildedRose(items);
@@ -58,7 +72,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void testNormalItems_degradeTwiceAsFastAfterSellByDateHasPassed() {
+    void testNormalItems_decreasesByTwoAfterSellByDateHasPassed() {
         //Given
         Item[] items = new Item[] {createNormalItem(0, 10)};
         GildedRose app = new GildedRose(items);
@@ -136,7 +150,7 @@ class GildedRoseTest {
     // -- Tests for Backstage & Brie items ---
 
     @Test
-    void testBackStageAndBrieItems_qualityIncreasesBeforeSellByDateHasPassed() {
+    void testBackStageAndBrieItems_qualityIncreasesByOneBeforeSellByDateHasPassed() {
         //Given
         Item[] items = new Item[] {createAgedBrieItem(1000, 10), createBackStageItem(1000,10)};
         GildedRose app = new GildedRose(items);
@@ -149,19 +163,34 @@ class GildedRoseTest {
         }
     }
 
+
+
+    // -- Tests for 'conjured' items ---
     @Test
-    void testBackStageAndBrieItems_qualityCanNeverBeHigherThan50() {
+    void testConjuredItems_degradeInQualityByTwoBeforeSellByDate() {
         //Given
-        Item[] items = new Item[] {createBackStageItem(1, 50), createAgedBrieItem(1, 50)};
+        Item[] items = new Item[] {createConjuredItem(1, 10)};
         GildedRose app = new GildedRose(items);
         //When
         app.updateQualities();
         //Then
-        for (Item item : items) {
-            assertEquals(0, item.sellIn);
-            assertEquals(50, item.quality);
-        }
+        assertEquals(0, items[0].sellIn);
+        assertEquals(8, items[0].quality);
     }
+
+
+    @Test
+    void testConjuredItems_degradeInQualityByFourAfterSellByDate() {
+        //Given
+        Item[] items = new Item[] {createConjuredItem(0, 10)};
+        GildedRose app = new GildedRose(items);
+        //When
+        app.updateQualities();
+        //Then
+        assertEquals(-1, items[0].sellIn);
+        assertEquals(6, items[0].quality);
+    }
+
 
     private Item createAgedBrieItem(int sellIn, int quality) {
         return new AgedBrieItem("Aged Brie", sellIn, quality);
@@ -177,6 +206,10 @@ class GildedRoseTest {
 
     private Item createNormalItem(int sellIn, int quality) {
         return new NormalItem("Some Item", sellIn, quality);
+    }
+
+    private Item createConjuredItem(int sellIn, int quality) {
+        return new ConjuredItem("Conjured Item", sellIn, quality);
     }
 
 
