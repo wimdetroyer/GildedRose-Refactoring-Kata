@@ -47,5 +47,21 @@ Rationale:
  - avoids checking type on a hard coded string
  - fixes the value to 80 for the legendary items
  
+Technical comments:
+
 I'm aware a lot of the code refactored here will just dissapear in later steps, but to really drive home the incremental approach i'll do it anyway.
+
+### Step 2.2 - Handling each item in a seperate method
+
+Rationale:
+ - reduce cognitive complexity
+ - better naming
+ - helpful for step 2.3
+
+### Step 2.3 - moving the check on legendary item to the beginning as a guard statement/clause.
+
+Rationale: 
+ - See: https://refactoring.com/catalog/replaceNestedConditionalWithGuardClauses.html (cfr Martin Fowler)
+ 
+
 

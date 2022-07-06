@@ -30,7 +30,7 @@ public class TextTestFixture {
                 System.out.println(item);
             }
             System.out.println();
-            app.updateQuality();
+            app.updateQualities();
         }
     }
 

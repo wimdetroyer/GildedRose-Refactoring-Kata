@@ -14,7 +14,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createLegendaryItem()};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(80, items[0].quality);
     }
@@ -25,7 +25,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createLegendaryItem()};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(0, items[0].sellIn);
     }
@@ -37,7 +37,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createNormalItem(5, 0), createAgedBrieItem(5,0), createBackStageItem(5,0)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         for (Item item : items) {
             assertTrue(item.quality >= 0);
@@ -51,7 +51,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createNormalItem(1, 10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(0, items[0].sellIn);
         assertEquals(9, items[0].quality);
@@ -63,7 +63,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createNormalItem(0, 10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(-1, items[0].sellIn);
         assertEquals(8, items[0].quality);
@@ -75,14 +75,14 @@ class GildedRoseTest {
         Item[] items = new Item[] {createBackStageItem(11, 10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(10, items[0].sellIn);
         assertEquals(11, items[0].quality);
         // Now up until five days it should increase by two...
         for (int i = 1 ; i <= 5 ; i++) {
             //When
-            app.updateQuality();
+            app.updateQualities();
             //Then
             assertEquals(10 - i, items[0].sellIn);
             assertEquals(11 + (i * 2), items[0].quality);
@@ -98,7 +98,7 @@ class GildedRoseTest {
         // Now up until the sell by date  it should increase by three...
         for (int i = 1 ; i <= 5 ; i++) {
             //When
-            app.updateQuality();
+            app.updateQualities();
             //Then
             assertEquals(5 - i, items[0].sellIn);
             assertEquals(12 + (i * 3), items[0].quality);
@@ -112,7 +112,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createBackStageItem(0, 10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(-1, items[0].sellIn);
         assertEquals(0, items[0].quality);
@@ -126,7 +126,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createAgedBrieItem(0, 10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         assertEquals(-1, items[0].sellIn);
         assertEquals(12, items[0].quality);
@@ -141,7 +141,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createAgedBrieItem(1000, 10), createBackStageItem(1000,10)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         for (Item item : items) {
             assertEquals(999, item.sellIn);
@@ -155,7 +155,7 @@ class GildedRoseTest {
         Item[] items = new Item[] {createBackStageItem(1, 50), createAgedBrieItem(1, 50)};
         GildedRose app = new GildedRose(items);
         //When
-        app.updateQuality();
+        app.updateQualities();
         //Then
         for (Item item : items) {
             assertEquals(0, item.sellIn);
