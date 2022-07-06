@@ -10,8 +10,6 @@
 - Commits will follow following guidelines: https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Some thoughts on the existing code
-- I must admit it strikes me as odd that the value of sellIn is not IMMEDIATELY decremented instead of in the middle of the method.
-  - However I will not change the sequence of the code (that is not refactoring - however in this case the functionality would not change, so...)
 - The Item class itself cannot be changed. That's a shame . 
   - I'm a proponent of Domain Driven Design where possible (<> anemic domain model: https://martinfowler.com/bliki/AnemicDomainModel.html)
     - quality must be >=0 & <= 50 is an example of a business rule inherent to an item
@@ -83,5 +81,14 @@ Rationale:
 
 ### Step 2.6 - simplify variable assignments & increments/decrements
 
+### Step 2.7 - simplify  increment logic
+
+(some test cases renamed to be more clear)
+
+Rationale:
+
+- avoid nested if statements
+- move sellIn decrement up  in order to have a more logical, linear code flow.
+- early abort when backstageitem & expired date.
 
 

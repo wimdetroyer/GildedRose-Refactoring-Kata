@@ -70,13 +70,13 @@ class GildedRoseTest {
     }
 
     @Test
-    void testBackStageItem_qualityIncreasesByTwoWhenTenDaysOrLess() {
+    void testBackStageItem_qualityIncreasesByTwoWhenInitialSellInWasTenDaysOrLess() {
         //Given
         Item[] items = new Item[] {createBackStageItem(11, 10)};
         GildedRose app = new GildedRose(items);
         //When
         app.updateQualities();
-        //Then
+        //Then (we need this to check the upper bound)
         assertEquals(10, items[0].sellIn);
         assertEquals(11, items[0].quality);
         // Now up until five days it should increase by two...
@@ -90,7 +90,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void testBackStageItem_qualityIncreasesByThreeWhenFiveDaysOrLess() {
+    void testBackStageItem_qualityIncreasesByThreeWhenInitialSellInWasFiveDaysOrLess() {
         //Given
         Item[] items = new Item[] {createBackStageItem(5, 12)};
         GildedRose app = new GildedRose(items);
@@ -121,7 +121,7 @@ class GildedRoseTest {
     // -- Tests for Brie items ---
 
     @Test
-    void testBrieItem_qualityIncreasesAfterSellByDateHasPassed() {
+    void testBrieItem_qualityIncreasesByTwoAfterSellByDateHasPassed() {
         //Given
         Item[] items = new Item[] {createAgedBrieItem(0, 10)};
         GildedRose app = new GildedRose(items);
