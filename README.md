@@ -140,4 +140,7 @@ https://github.com/wimdetroyer/GildedRose-Refactoring-Kata/pull/2
 ## Step 4 An alternative approach?
 
 This exercise was quite fun to do, albeit with a procedural approach.
-it might have been interesting to use polymorphism/strategy pattern to let each object implement their own 'update' method instead of having the updateQuality method.
+it might have been interesting to use polymorphism  to let each object implement their own 'update' method instead of having the updateQuality method.
+Since I understood this was not allowed, I didn't go for it. In any case a PR exists to showcase this: https://github.com/wimdetroyer/GildedRose-Refactoring-Kata/pull/3
+
+It's also possible to to do this via the strategy pattern but this was not implemented.
