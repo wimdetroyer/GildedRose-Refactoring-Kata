@@ -38,3 +38,14 @@ Conventions:
 
 After testing all scenarios (11), we get to 100% coverage. We're ready for some refactoring!
 
+## Step 2 - Refactors on the existing code
+
+### Step 2.1 - Extending the item class
+
+Rationale:
+
+ - avoids checking type on a hard coded string
+ - fixes the value to 80 for the legendary items
+ 
+I'm aware a lot of the code refactored here will just dissapear in later steps, but to really drive home the incremental approach i'll do it anyway.
+

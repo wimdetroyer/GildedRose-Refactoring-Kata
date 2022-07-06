@@ -164,24 +164,20 @@ class GildedRoseTest {
     }
 
     private Item createAgedBrieItem(int sellIn, int quality) {
-        return createItem("Aged Brie", sellIn, quality);
+        return new AgedBrieItem("Aged Brie", sellIn, quality);
     }
 
     private Item createBackStageItem(int sellIn, int quality) {
-        return createItem("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
+        return new BackstageItem("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
 
     private Item createLegendaryItem() {
-        return createItem("Sulfuras, Hand of Ragnaros", 0, 80);
+        return new LegendaryItem("Sulfuras, Hand of Ragnaros", 0);
     }
 
     private Item createNormalItem(int sellIn, int quality) {
-        return createItem("Some Item", sellIn, quality);
+        return new NormalItem("Some Item", sellIn, quality);
     }
 
-
-    private Item createItem(String name, int sellIn, int quality) {
-        return new Item(name, sellIn, quality);
-    }
 
 }
