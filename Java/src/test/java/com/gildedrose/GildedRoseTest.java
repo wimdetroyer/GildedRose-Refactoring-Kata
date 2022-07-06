@@ -16,7 +16,7 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(80, items[0].quality);
+        assertEquals(80, items[0].getQuality());
     }
 
     @Test
@@ -27,7 +27,7 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(0, items[0].sellIn);
+        assertEquals(0, items[0].getSellIn());
     }
 
     // -- Tests for all non legendary items ---
@@ -40,7 +40,7 @@ class GildedRoseTest {
         app.updateQualities();
         //Then
         for (Item item : items) {
-            assertTrue(item.quality >= 0);
+            assertTrue(item.getQuality() >= 0);
         }
     }
 
@@ -53,8 +53,8 @@ class GildedRoseTest {
         app.updateQualities();
         //Then
         for (Item item : items) {
-            assertEquals(4, item.sellIn);
-            assertTrue(item.quality <= 50);
+            assertEquals(4, item.getSellIn());
+            assertTrue(item.getQuality() <= 50);
         }
     }
 
@@ -67,8 +67,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(0, items[0].sellIn);
-        assertEquals(9, items[0].quality);
+        assertEquals(0, items[0].getSellIn());
+        assertEquals(9, items[0].getQuality());
     }
 
     @Test
@@ -79,8 +79,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(-1, items[0].sellIn);
-        assertEquals(8, items[0].quality);
+        assertEquals(-1, items[0].getSellIn());
+        assertEquals(8, items[0].getQuality());
     }
 
     @Test
@@ -91,15 +91,15 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then (we need this to check the upper bound)
-        assertEquals(10, items[0].sellIn);
-        assertEquals(11, items[0].quality);
+        assertEquals(10, items[0].getSellIn());
+        assertEquals(11, items[0].getQuality());
         // Now up until five days it should increase by two...
         for (int i = 1 ; i <= 5 ; i++) {
             //When
             app.updateQualities();
             //Then
-            assertEquals(10 - i, items[0].sellIn);
-            assertEquals(11 + (i * 2), items[0].quality);
+            assertEquals(10 - i, items[0].getSellIn());
+            assertEquals(11 + (i * 2), items[0].getQuality());
         }
     }
 
@@ -114,8 +114,8 @@ class GildedRoseTest {
             //When
             app.updateQualities();
             //Then
-            assertEquals(5 - i, items[0].sellIn);
-            assertEquals(12 + (i * 3), items[0].quality);
+            assertEquals(5 - i, items[0].getSellIn());
+            assertEquals(12 + (i * 3), items[0].getQuality());
         }
     }
 
@@ -128,8 +128,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(-1, items[0].sellIn);
-        assertEquals(0, items[0].quality);
+        assertEquals(-1, items[0].getSellIn());
+        assertEquals(0, items[0].getQuality());
     }
 
     // -- Tests for Brie items ---
@@ -142,8 +142,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(-1, items[0].sellIn);
-        assertEquals(12, items[0].quality);
+        assertEquals(-1, items[0].getSellIn());
+        assertEquals(12, items[0].getQuality());
     }
 
 
@@ -158,8 +158,8 @@ class GildedRoseTest {
         app.updateQualities();
         //Then
         for (Item item : items) {
-            assertEquals(999, item.sellIn);
-            assertEquals(11, item.quality);
+            assertEquals(999, item.getSellIn());
+            assertEquals(11, item.getQuality());
         }
     }
 
@@ -174,8 +174,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(0, items[0].sellIn);
-        assertEquals(8, items[0].quality);
+        assertEquals(0, items[0].getSellIn());
+        assertEquals(8, items[0].getQuality());
     }
 
 
@@ -187,8 +187,8 @@ class GildedRoseTest {
         //When
         app.updateQualities();
         //Then
-        assertEquals(-1, items[0].sellIn);
-        assertEquals(6, items[0].quality);
+        assertEquals(-1, items[0].getSellIn());
+        assertEquals(6, items[0].getQuality());
     }
 
 
