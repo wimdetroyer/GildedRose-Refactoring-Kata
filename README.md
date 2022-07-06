@@ -10,8 +10,9 @@
 - Commits will follow following guidelines: https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Some thoughts on the existing code
-- I will not change the sequence of the code (that is not refactoring - however in this case the functionality would not change, so...) but I must admit it strikes me as odd that the value of sellIn is not IMMEDIATELY decremented instead of in the middle of the method.
-- The Item class cannot be changed. That's a shame . 
+- I must admit it strikes me as odd that the value of sellIn is not IMMEDIATELY decremented instead of in the middle of the method.
+  - However I will not change the sequence of the code (that is not refactoring - however in this case the functionality would not change, so...)
+- The Item class itself cannot be changed. That's a shame . 
   - I'm a proponent of Domain Driven Design where possible (<> anemic domain model: https://martinfowler.com/bliki/AnemicDomainModel.html)
     - quality must be >=0 & <= 50 is an example of a business rule inherent to an item
     - Legendary items (like Sulfaras) being immutable with a fixed value is an example of a business rule inherent to an item
@@ -69,5 +70,18 @@ Rationale:
  - in order to reduce nested ifs
  - Since we dont process legendary items this will work nicely
  - with DDD, this is also something we could enforce on the item object itself
+ - 
 Drawback:
  - some code needlessly gets executed
+
+### Step 2.5 - Simplify remaining if statements
+
+Rationale:
+
+ - Try to avoid negated if statements (this ever so slightly adds cognitive load)
+ - simplify logic where possible
+
+### Step 2.6 - simplify variable assignments & increments/decrements
+
+
+

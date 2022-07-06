@@ -17,34 +17,33 @@ class GildedRose {
     }
 
     private void updateItem(Item item) {
-        if (!(item instanceof AgedBrieItem)
-            && !(item instanceof BackstageItem)) {
-            item.quality = item.quality - 1;
+        if (item instanceof NormalItem) {
+            item.quality--;
         } else {
-            item.quality = item.quality + 1;
+            item.quality++;
             if ((item instanceof BackstageItem)) {
                 if (item.sellIn < 11) {
-                    item.quality = item.quality + 1;
+                    item.quality++;
 
                 }
                 if (item.sellIn < 6) {
-                    item.quality = item.quality + 1;
+                    item.quality++;
 
                 }
             }
         }
 
-        item.sellIn = item.sellIn - 1;
-        if (item.sellIn < 0) {
-            if (!(item instanceof AgedBrieItem)) {
-                if (!(item instanceof BackstageItem)) {
-                    item.quality = item.quality - 1;
-                } else {
-                    item.quality = item.quality - item.quality;
-                }
-            } else {
-                item.quality = item.quality + 1;
+        item.sellIn--;
 
+        if (item.sellIn < 0) {
+            if (item instanceof AgedBrieItem) {
+                item.quality++;
+            } else {
+                if (item instanceof BackstageItem) {
+                    item.quality = 0;
+                } else {
+                    item.quality--;
+                }
             }
         }
 
