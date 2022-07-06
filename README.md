@@ -92,3 +92,46 @@ Rationale:
 - early abort when backstageitem & expired date.
 
 
+### Step 2.8 - PR strategy
+
+Following PR was opened & merged:
+
+https://github.com/wimdetroyer/GildedRose-Refactoring-Kata/pull/1
+
+Note: normally i'd do the squash and rebase fast-forward-only merge strategy for cleaner commits!
+
+## Step 3 - implement new 'conjured item' logic
+
+We presuppose following behaviour for conjured items:
+
+### Quality:
+
+- sellIn > 0 -> decrement quality by two
+- sellIn < 0 -> decrement quality by four
+
+### Other behaviour
+
+ - 0 < quality < 50
+
+
+### Step 3.1 TDD
+
+#### Existing tests
+
+ - I expanded an existing test to also allow conjured items (quality never negative)
+ - I expanded to also allow conjured items & improved upon one existing test. (quality never higher than 50)
+
+#### new tests
+
+ I added two tests for the before and after sellIn. 
+ 
+In the spirit of TDD, these should break before development, which they did :-)
+
+### Step 3.2 impl. behaviour
+
+The solution was adding a simple if check.
+
+## Step 4 An alternative approach?
+
+This exercise was quite fun to do, albeit with a procedural approach.
+it might have been interesting to use polymorphism/strategy pattern to let each object implement their own 'update' method instead of having the updateQuality method.
